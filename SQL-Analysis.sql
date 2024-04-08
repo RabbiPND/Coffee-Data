@@ -21,27 +21,27 @@ FROM Portfolio.dbo.orders
 
 
 -----Total number of orders
-SELECT COUNT(*) AS "Total Orders"
+SELECT COUNT([Order ID]) AS "Total Orders"
 FROM Portfolio.dbo.orders
 
 
 -----Total Sales per country
-SELECT Country, SUM(Sales) AS "Rotal Sales"
+SELECT [Order Date_Updated], [Country], ROUND(SUM([Sales]),2) AS "Total Sales"
 FROM Portfolio.dbo.orders
-GROUP BY Country
+GROUP BY [Order Date_Updated],[Country]
 
 
 -----Average orders Per country
-SELECT Country, AVG(Sales) AS "Average orders"
+SELECT Country, ROUND(AVG(Sales),2) AS "Average orders"
 FROM Portfolio.dbo.orders
 GROUP BY Country
 
 
 
 -----Orders per date/daily
-SELECT [Order Date_Updated], COUNT(*) AS "Number of orders per day"
+SELECT [Order Date_Updated],[Coffee Type], COUNT(*) AS "Number of orders per day"
 FROM Portfolio.dbo.orders
-GROUP BY [Order Date_Updated]
+GROUP BY [Order Date_Updated], [Coffee Type]
 ORDER BY [Order Date_Updated]
 
 
@@ -56,7 +56,7 @@ ORDER BY "Total_quantity sold" DESC
 
 
 
------Total numbers of orders per customer
+-----Top 10 customer orders
 SELECT *
 FROM Portfolio.dbo.orders
 
@@ -68,6 +68,17 @@ ORDER BY "Number of orders" DESC
 
 
 
+-------Total Number of orders overtime per country
+SELECT *
+FROM Portfolio.dbo.orders
+
+SELECT
+[Order Date_Updated],[Country], COUNT([Customer ID]) AS "Number of orders"
+FROM Portfolio.dbo.orders
+GROUP BY [Order Date_Updated],[Country]
+ORDER BY [Order Date_Updated] DESC,"Number of orders" DESC
+
+
 -----Average price per coffee type
 SELECT [Coffee Type], ROUND(AVG([Unit Price]),2) AS "Average Price"
 FROM Portfolio.dbo.orders
@@ -75,12 +86,24 @@ GROUP BY [Coffee Type]
 ORDER BY "Average Price" DESC
 
 
+-----Total roast type sales overtime per country
+SELECT *
+FROM Portfolio.dbo.orders
+
+SELECT [Order Date_Updated],[Country], [Roast Type], ROUND(SUM([Sales]),2) AS "Total roast type sales per country"
+FROM Portfolio.dbo.orders
+GROUP BY [Order Date_Updated],[Country], [Roast Type]
+ORDER BY [Country]
+
+
+
+
 
 ----Top selling coffee type
-SELECT [Coffee Type], ROUND(SUM(Sales),2) "Total Sales"
+SELECT [Order Date_Updated],[Coffee Type], ROUND(SUM([Sales]),2) "Total Sales"
 FROM Portfolio.dbo.orders
-GROUP BY [Coffee Type]
-ORDER BY "Total Sales" DESC
+GROUP BY [Order Date_Updated],[Coffee Type]
+ORDER BY [Order Date_Updated],"Total Sales" DESC
 
 
 ----
