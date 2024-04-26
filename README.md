@@ -7,11 +7,15 @@ But before that, I did some operations in the data to help me to analyse it accu
 2.	Data cleaning: excel functions were employed to populate the missing customer and product information in the dataset. Using two excel sheets: customer and product and functions like VLOOKUP to gather customer info and INDEX MATCH to gather product info, hench INDEX MATCH is more dynamic formula.
 3.	Data formatting: Used IF functions to expand abbreviated Coffee Types and Roast Types, formatted Date, Size, Unit Price and Sales columns for better readability and removed all duplicates.
 4.	Data organization: converted range into a table for preparation to facilitate PIVOT TABLES AND PIVOT CHARTS analysis.
+
+
 After exploring and understanding the dataset, the following key questions were formulated to guide the analysis:
 1.	Yearly Total Sales Trends by Coffee Types: Investigate sales evolution and patterns, identifying outliers and underlying causes.
 2.	Total Sale Price Comparison Across Different Countries: Compare sale prices across three countries to reveal spatial variations.
 3.	Customer Loyalty Trends: Identify the top 5 customers in terms of sales to understand loyalty trends.
 4.	Average Sale Price Comparison Across Roast Types: Analyse average sale prices across various roast types for insights into consumer preferences.
+
+
 Visualization
 In my Excel dashboard, I've crafted various visualizations to extract and communicate general insights from my analysis:
 1.	Total Sales per Coffee Type Over Time: This dynamic line graph provides a concise overview of sales trends across various coffee types over time, facilitating a deeper understanding of market dynamics.
